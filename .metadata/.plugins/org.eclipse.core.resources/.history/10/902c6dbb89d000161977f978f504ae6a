@@ -1,0 +1,106 @@
+/**
+ * Date: Jan 1, 2017
+ * Author: Work
+ * TestCase: ElementOperations.java
+ * Description: 
+ */
+
+
+/**/
+package rnd;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import setup.TestSetup;
+
+public class ElementOperations {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		String URL = "http://newtours.demoaut.com";
+		//Get URL / Navigate
+		TestSetup.getDriver().get(URL);
+		//TestSetup.getDriver().navigate().to(URL);
+		//TestSetup.getDriver().navigate().back(); //Browser's Back button
+		// TestSetup.getDriver().navigate().forward(); //Browser's Forward button
+ 		//TestSetup.getDriver().navigate().refresh();
+		
+
+		//Get Page Source
+		
+		String pageSource = TestSetup.getDriver().getPageSource();
+		System.out.println("Page Source is: \n"+pageSource);
+		
+		//Get Page URL (Eg: http://newtours.demoaut.com/mercurypurchase.php) 
+		String currentURL = TestSetup.getDriver().getCurrentUrl();
+		System.out.println("Current URL is: "+currentURL);
+		
+		//Link - Click
+ 		TestSetup.getDriver().findElement(By.id("id")).click();
+ 		
+ 		//Button - Click
+ 		TestSetup.getDriver().findElement(By.linkText("SUBMIT")).click();//Submit is a look-alike button
+ 		
+ 		TestSetup.getDriver().findElement(By.partialLinkText("REGIST")).click(); //REGISTER --> REGISTRATION	
+		TestSetup.getDriver().findElement(By.name("passFirst0")).click();
+	 
+		//TextBox - Clear & Type
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'First')]")).clear();
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'First')]")).sendKeys("Selenium");
+
+		//RadioButton - Click & Click Other (deselect)
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@value,'Business') ]")).click();
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@value,'First') ]")).click();
+		
+		//Checkbox - Check & Uncheck
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'vehicle') and contains(@value,'Bike')]")).click();//check
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'vehicle') and contains(@value,'Bike')]")).click();//uncheck
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'vehicle') and contains(@value,'Bike')]")).clear();//uncheck
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@value,'Car')]")).click();//checking another checkbox with no 'and'
+
+		//Image(Link) - Click
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name, 'findFlights')]")).click();
+				
+		//Submit - Submitting filled-in details of the page
+		TestSetup.getDriver().findElement(By.xpath("//input[contains(@name,'servClass')]")).submit();
+		
+		//Dropdown (Single select)
+		//ByVisibleText
+		WebElement ele = TestSetup.getDriver().findElement(By.xpath("//select[contains(@name,'passCount')]"));
+		Select sel = new Select(ele);
+		sel.selectByVisibleText("3"); //Selecting
+		sel.deselectByVisibleText("3"); //Resetting to default value
+		//ByValue
+		Select departFrom = new Select(TestSetup.getDriver().findElement(By.xpath("//table/tbody/tr[4]/td[2]/select")));
+		departFrom.selectByValue("New York");
+		departFrom.deselectByValue("New York");
+		//ByIndex
+		new Select(TestSetup.getDriver().findElement(By.xpath("//select[ (@name='airline')]"))).selectByIndex(2); //Unified Airlines
+		new Select(TestSetup.getDriver().findElement(By.xpath("//select[ (@name='airline')]"))).deselectByIndex(2); //Deselect to 
+				
+		//Get Title
+ 		String pageTitle = TestSetup.getDriver().getTitle();
+		
+ 		//Get Text
+ 		String totalPrice = TestSetup.getDriver().findElement(By.xpath("//table/tbody/tr[9]/td[2]/font/b")).getText();
+		System.out.println("Total Price = "+ totalPrice);
+		
+		//Close Single Browser Instance
+ 		TestSetup.getDriver().close();
+ 		
+ 		//Close Multiple Browser Instance
+ 		TestSetup.getDriver().quit();
+ 		
+ 		
+ 		
+ 		
+ 		
+		
+	}
+
+}
