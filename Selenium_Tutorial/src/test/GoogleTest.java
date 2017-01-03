@@ -25,7 +25,7 @@ import utils.StringUtils;
 public class GoogleTest {
 	/**
 	 * Date Dec 30, 2016
-	 * commiting to github test...
+	 * commiting to github test 12 
 	 * Author SeleniumAutomationEngineer
 	 * TestCase: GoogleTest.java
 	 * Description: Test case will 
