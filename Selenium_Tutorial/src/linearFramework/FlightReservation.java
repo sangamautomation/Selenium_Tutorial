@@ -1,6 +1,6 @@
 /**
  * Date: Jan 1, 2017
- * Author: Work
+ * Author: Selenium Tester
  * TestCase: FlightReservation.java
  * Description: 
  */
