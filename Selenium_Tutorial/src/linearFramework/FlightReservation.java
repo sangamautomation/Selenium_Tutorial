@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import setup.TestSetup;
@@ -28,8 +29,14 @@ public class FlightReservation {
 	public static void main(String[] args) throws Exception {
 
 		// Create WebDriver
-		System.setProperty("webdriver.chrome.driver", "D:/Selenium_Drivers\\drivers/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		
+		//Chrome Browser
+		//	System.setProperty("webdriver.chrome.driver", "D:/Selenium_Drivers\\drivers/chromedriver.exe");
+		//	WebDriver driver = new ChromeDriver();
+		
+		//Firefox Browser
+		System.setProperty("webdriver.gecko.driver", "D:/Selenium_Drivers\\drivers/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
 
 		String URL = "http://newtours.demoaut.com";
 		//Get URL / Navigate
@@ -168,18 +175,60 @@ public class FlightReservation {
 
 		driver.findElement(By.xpath("//input[contains(@name,'passFirst1')]")).sendKeys("Mary");
 		driver.findElement(By.xpath("//input[contains(@name,'passLast1')]")).sendKeys("Smith");
-		
+
 		//Credit Card
- 		new Select(driver.findElement(By.xpath("//select[contains(@name,'creditCard')]"))).selectByVisibleText("Discover");
+		new Select(driver.findElement(By.xpath("//select[contains(@name,'creditCard')]"))).selectByVisibleText("Discover");
 		driver.findElement(By.xpath("//input[contains(@name,'creditnumber')]")).sendKeys("1234567890123456"); //16-Digits
- 		new Select(driver.findElement(By.xpath("//select[contains(@name,'cc_exp_dt_mn')]"))).selectByVisibleText("05");
- 		new Select(driver.findElement(By.xpath("//select[contains(@name,'cc_exp_dt_yr')]"))).selectByVisibleText("2010");
+		new Select(driver.findElement(By.xpath("//select[contains(@name,'cc_exp_dt_mn')]"))).selectByVisibleText("05");
+		new Select(driver.findElement(By.xpath("//select[contains(@name,'cc_exp_dt_yr')]"))).selectByVisibleText("2010");
 
 		driver.findElement(By.xpath("//input[contains(@name,'cc_frst_name')]")).sendKeys("John");
 		driver.findElement(By.xpath("//input[contains(@name,'cc_last_name')]")).sendKeys("Smith");
 		driver.findElement(By.xpath("//input[contains(@name,'buyFlights')]")).click();
 
+		//Flight Confirmation - Validation
+		String confirmationMessage_Expected = "Your itinerary has been booked!";
+		String confirmationMessage_Actual = driver.findElement(By.xpath("//table//tbody//tr//td//p//font//b//font[contains(text(),'itinerary has been booked')]")).getText();
 
+		/*	if(confirmationMessage_Expected.equals(confirmationMessage_Actual))
+			System.out.println("Pass");
+		else
+			System.out.println("Fail");
+		 */
+		StringUtils.compare(confirmationMessage_Expected, confirmationMessage_Actual);
+
+		String toPrice = driver.findElement(By.xpath("//table/tbody/tr[3]/td/font")).getText(); // Technique: Mention exact row number to avoid multiple matches
+		int beginIndex= toPrice.indexOf("$"); //eg. 43
+		toPrice = toPrice.substring(beginIndex) ;//270 each
+		int endIndex= toPrice.indexOf(" "); //eg. 3
+ 		toPrice = toPrice.substring(0, endIndex); //$270
+ 		toPrice = toPrice.replace("$","");
+ 		
+ 		System.out.println("toPrice = "+toPrice);
+		
+		String fromPrice = driver.findElement(By.xpath("//table/tbody/tr[5]/td/font")).getText();
+		int bIndex= fromPrice.indexOf("$"); //eg. 43
+		fromPrice = fromPrice.substring(bIndex) ;//270 each
+		int eIndex= fromPrice.indexOf(" "); //eg. 3
+		fromPrice = fromPrice.substring(0, eIndex); //$270
+		fromPrice = fromPrice.replace("$","");
+		
+		System.out.println("fromPrice = "+fromPrice);
+		
+		
+		/*toPrice = London to Portland
+				3/7/2017 @ 5:03 w/ Blue Skies Airlines 360
+				First
+				$270 each
+		
+		fromPrice = Portland to London
+				7/11/2017 @ 14:30 w/ Blue Skies Airlines 631
+				First
+				$273 each
+*/
+		
+		
+		
 		//	driver.quit();
 	}
 
