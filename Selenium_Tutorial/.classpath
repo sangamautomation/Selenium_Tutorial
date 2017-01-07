@@ -36,5 +36,8 @@
 	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/client-combined-3.0.1-nodeps.jar"/>
+	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/Extra/ios-server-standalone-0.6.6-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/Extra/selendroid-standalone-0.17.0-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="D:/Selenium_Drivers/drivers/Extra/selenium-server-standalone-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
