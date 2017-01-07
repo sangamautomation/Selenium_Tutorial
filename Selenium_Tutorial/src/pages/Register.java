@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import data.Constants;
+import utils.ReportUtils;
+import utils.ScreenshotUtils;
+
 public class Register {
 
 	/**
@@ -40,6 +44,9 @@ public class Register {
 			driver.findElement(By.id("email")).sendKeys("user1"); //By mistake, Dev has given Username's field's id as 'email' instead of 'userName'
 			driver.findElement(By.xpath("//input[contains(@name,'password')]")).sendKeys("Password123");
 			driver.findElement(By.xpath("//input[contains(@name,'confirmPassword')]")).sendKeys("Password123");
+			
+			ReportUtils.reportResult("Pass", "Registration", "Registration is successful!");
+			
 			driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
 			Thread.sleep(5000); // Wait to see the confirmation screen
 

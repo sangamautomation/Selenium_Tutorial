@@ -161,7 +161,10 @@ public class FlightReservation {
 		//input[contains(@name,'findFlights')]
 		driver.findElement(By.xpath("//input[contains(@name,'findFlights')]")).click();
 
-		//Select Flight
+		
+		
+		
+		//******************* Select Flight ****************************
 
 		//Depart
 		driver.findElement(By.xpath("//td[contains(@class,'frame_action_xrows')]//input[contains(@value, 'Blue Skies Airlines$360') and contains(@name,'outFlight')]")).click();

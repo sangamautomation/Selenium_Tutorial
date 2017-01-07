@@ -15,7 +15,7 @@ public class TC1_RegisterLoginPurchaseValidate {
 		try {
 			//Test Setup
 			String browser = args[0];
- 			String URL = "http://demoaut.com/";
+ 			String URL = args[1]; //"http://demoaut.com/";
 			driver = new TestSetup().launchBrowser(browser);
  			TestRunSetup.prerequisites(driver, URL);
 			
@@ -24,10 +24,12 @@ public class TC1_RegisterLoginPurchaseValidate {
 	 		
 			
 		} catch (Exception e) {
- 			e.printStackTrace();
+			System.out.println("Entered Catch Block...");
+  			e.printStackTrace();
  			throw e; 
 		}
 		finally{
+			System.out.println("Entered Finally Block...");
 			//driver.close();// Close particular instance of browser 
 			driver.quit(); // Close all instances of browser
 		}
