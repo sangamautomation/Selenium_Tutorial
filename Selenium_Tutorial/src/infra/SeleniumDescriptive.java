@@ -2,7 +2,7 @@ package infra;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//Commiting to git account to sangamautomation (Selinium_Tutorial)
+//Commiting to git account to sangamautomation (Selenium_Tutorial)
 /**
  *SeleniumDescriptive - For All Infrastructural Level Reusable Functions
  */
