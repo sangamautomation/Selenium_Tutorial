@@ -1,4 +1,4 @@
-package pages;
+package pages_HardCoded;
 
 import java.util.HashMap;
 
@@ -22,8 +22,7 @@ public class Register {
 	 */
 	public void registration(WebDriver driver) throws Exception{
 		
-		SeleniumDescriptive sd = new SeleniumDescriptive();
-		HashMap<String,String> h = new HashMap<>();		
+ 		HashMap<String,String> h = new HashMap<>();		
 		h = TestDataPool.rowData;	
 		
 		
@@ -57,9 +56,8 @@ public class Register {
 			
 			ReportUtils.reportResult("Pass", "Registration", "Registration is successful!");
 			
-			//driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
-			sd.clickLink(driver, "//input[contains(@name,'register')]");
-			
+			 driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
+ 			
 			Thread.sleep(5000); // Wait to see the confirmation screen
 
 		} catch (Exception e) {

@@ -1,7 +1,5 @@
 package test.modularizedFramework;
 
-import java.util.HashMap;
-
 import org.openqa.selenium.WebDriver;
 
 import data.TestDataPool;
@@ -9,7 +7,7 @@ import flows.MercuryToursFlow;
 import setup.TestRunSetup;
 import setup.TestSetup;
 
-public class TC1_RegisterLoginPurchaseValidate {
+public class TC2_RegisterLoginPurchaseValidate {
 
 	public static void main(String[] args) throws Exception{
 		WebDriver driver = null;
@@ -26,7 +24,7 @@ public class TC1_RegisterLoginPurchaseValidate {
 			
  			//Mercury Tours Flow
  			mt.mercuryTours(driver);
-	 		
+	 		//kayakTours(driver);
 			
 		} catch (Exception e) {
 			System.out.println("Entered Catch Block...");

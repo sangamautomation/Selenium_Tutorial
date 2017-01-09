@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.uiautomation.ios.setup.IOSDeviceManagerFactory;
+//import org.uiautomation.ios.setup.IOSDeviceManagerFactory;
 
 public class TestSetup {
 	

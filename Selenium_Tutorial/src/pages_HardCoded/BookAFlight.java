@@ -1,4 +1,4 @@
-package pages;
+package pages_HardCoded;
 
 import java.util.HashMap;
 
@@ -14,16 +14,15 @@ import utils.ReportUtils;
 public class BookAFlight {
 	
 	public void bookFlight_Passengers(WebDriver driver){
-		SeleniumDescriptive sd = new SeleniumDescriptive();
+		
 		HashMap<String,String> h = new HashMap<>();		
 		h = TestDataPool.rowData;	
 		
 		
 		// Book A Flight
 				//Passengers
-				//driver.findElement(By.xpath("//input[contains(@name,'passFirst0')]")).sendKeys(h.get("FirstName")); // Non-Resuable
-				sd.setText(driver, PO_BookAFlight.TEXTBOX_FIRSTNAME, h.get("FirstName")); //Reusable using Encapsulation
- 				driver.findElement(By.xpath("//input[contains(@name,'passLast0')]")).sendKeys("Smith");
+				 driver.findElement(By.xpath("//input[contains(@name,'passFirst0')]")).sendKeys(h.get("FirstName")); // Non-Resuable
+  				driver.findElement(By.xpath("//input[contains(@name,'passLast0')]")).sendKeys("Smith");
 
 				driver.findElement(By.xpath("//input[contains(@name,'passFirst1')]")).sendKeys("Mary");
 				driver.findElement(By.xpath("//input[contains(@name,'passLast1')]")).sendKeys("Smith");
