@@ -17,7 +17,7 @@ public class AdhocTest {
 		
 		
 		TestDataPool td = new TestDataPool(3);
-		
+		System.out.println("something");
 		td.rowData.get("FirstName");
 		
 		System.out.println("First Name is "+td.rowData.get("FirstName") );
