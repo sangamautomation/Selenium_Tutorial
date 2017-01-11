@@ -112,16 +112,17 @@ public class FlightReservation {
 
 		//Sign in
 
-		/*	
-		WebElement username=driver.findElement(By.name("userName"));
+		 	
+	//	WebElement username=driver.findElement(By.name("userName"));
+		WebElement username=driver.findElement(By.xpath("//input[contains(@name,'userName')]"));
 
-		username.sendKeys("user1");
+		username.sendKeys("userName1");
 
 		driver.findElement(By.name("password")).sendKeys("Password123");
 
 		driver.findElement(By.xpath("//input[contains(@name,'login')]")).click();
 
-		 */
+		  
 
 		// Flight Finder
 

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import data.Constants;
 import data.TestDataPool;
 import infra.SeleniumDescriptive;
+import pageObjects.PO_Register;
 import utils.ReportUtils;
 import utils.ScreenshotUtils;
 
@@ -30,16 +31,23 @@ public class Register {
 				//********************** Registration *******************
 		try {
 			driver.findElement(By.partialLinkText("REGIST")).click(); //Click on Register link
-			driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).clear(); 
-			driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).sendKeys(h.get("FirstName")); //Type FirstName
-			driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).clear(); 
-			driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).sendKeys(h.get("LastName")); //Type last name
-			driver.findElement(By.xpath("//input[contains(@name,'phone')]")).clear(); 
-			driver.findElement(By.xpath("//input[contains(@name,'phone')]")).sendKeys("123-456-7890"); //Type phone number 
+			sd.setText(driver, PO_Register.TEXT_FIRSTNAME, h.get("FirstName"));
+ 			// driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).sendKeys(h.get("FirstName")); //Type FirstName
+			
+			sd.setText(driver, PO_Register.TEXT_LASTNAME, h.get("LastName")); // Hybrid (Infra level fn + Page Object Xpath + Datapool parameterization)
+			//driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).clear(); 
+ 			//driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).sendKeys(h.get("LastName")); //Type last name
+			
+			sd.setText(driver, "//input[contains(@name,'phone')]", h.get("PhoneNo"));
+ 			//driver.findElement(By.xpath("//input[contains(@name,'phone')]")).sendKeys("123-456-7890"); //Type phone number 
+			
+			
 			driver.findElement(By.cssSelector("input#userName")).clear();  //By mistake, Dev has given Email field's id as 'userName', it's supposed to be 'email'
 			driver.findElement(By.cssSelector("input#userName")).sendKeys(h.get("Email")); //Type email
-			driver.findElement(By.name("address1")).clear();
-			driver.findElement(By.name("address1")).sendKeys(h.get("Address1"));	
+ 			
+			sd.setTextByName(driver, "address1", h.get("Address1"));
+ 			//driver.findElement(By.name("address1")).sendKeys(h.get("Address1"));	
+			
 			driver.findElement(By.name("city")).clear();
 			driver.findElement(By.name("city")).sendKeys("Jersey City");	
 			driver.findElement(By.name("state")).clear();
@@ -57,7 +65,7 @@ public class Register {
 			
 			ReportUtils.reportResult("Pass", "Registration", "Registration is successful!");
 			
-			//driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
+			 driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
 			sd.clickLink(driver, "//input[contains(@name,'register')]");
 			
 			Thread.sleep(5000); // Wait to see the confirmation screen

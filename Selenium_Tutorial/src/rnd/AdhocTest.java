@@ -2,12 +2,18 @@ package rnd;
 
 import java.util.HashMap;
 
+import data.Constants;
 import data.TestDataPool;
 import utils.ExcelUtils;
+import utils.PropertyUtils;
 
 public class AdhocTest {
 
 	public static void main(String[] args) throws Exception {
+		
+		
+		PropertyUtils.propertyFile_Read(Constants.path_PropertyFile_config, "browserType");
+		PropertyUtils.propertyFile_Write(Constants.path_PropertyFile_config, "Price", "$1300");
 		
 		
 		TestDataPool td = new TestDataPool(3);

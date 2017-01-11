@@ -109,7 +109,7 @@ public class GoogleTest {
 			ImageIO.write(image, "jpg", new File("D:\\Selenium_Logs\\Screenshots/sceenshot2.jpg"));
 
 			//Get the Page Title and Store it in String variable
-			String pageTitle_Expected="Say Cheese! ";//- Google Search
+			String pageTitle_Expected="Say Cheese! - Google Search";//
 			String pageTitle_Actual = driver.getTitle(); //Read title of page
 
 
@@ -121,6 +121,7 @@ public class GoogleTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		finally{
 			//Close the Browser

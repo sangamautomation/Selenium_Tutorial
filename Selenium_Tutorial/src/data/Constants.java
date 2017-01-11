@@ -12,6 +12,7 @@ public class Constants {
 	public static String dataPool_Xls = "D:/Selenium_Logs/TestData/TestDatapool.xls";
 	public static String dataPool_Xlsx = "D:/Selenium_Logs/TestData/Datapool.xlsx";
 
+	public static String path_PropertyFile_config ="D:/Selenium_Logs/TestData/config.properties";
 	
 	
 }

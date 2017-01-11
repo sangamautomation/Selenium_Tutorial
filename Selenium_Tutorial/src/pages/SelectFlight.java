@@ -14,8 +14,7 @@ public class SelectFlight {
 
 	//Depart
 	driver.findElement(By.xpath("//td[contains(@class,'frame_action_xrows')]//input[contains(@value, 'Blue Skies Airlines$360') and contains(@name,'outFlight')]")).click();
-
-	//Return
+ 	//Return
 	driver.findElement(By.xpath("//td[contains(@class,'frame_action_xrows')]//input[contains(@value, 'Blue Skies Airlines$631') and contains(@name,'inFlight')]")).click();
  	
 	ReportUtils.reportResult("Pass", "Select Flight", "Select Flight has been successfully displayed!");
