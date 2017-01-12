@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import data.Constants;
+import utils.PropertyUtils;
 import utils.ReportUtils;
 import utils.StringUtils;
 
@@ -75,7 +77,8 @@ public class FlightConfirmation {
 	   // FINAL Calculation
 	   
 	   if (totalPriceint == (toPriceInt+fromPriceInt)*2+Totaltaxesint) {
- 		ReportUtils.reportResult("Pass", "Total Price", "Total Price is calculated correctly!");
+		   PropertyUtils.propertyFile_Write(Constants.path_PropertyFile_config, "TotalFlightPrice", "$"+totalPriceint);
+		   ReportUtils.reportResult("Pass", "Total Price", "Total Price is calculated correctly!");
 	   }
 		else
 		{

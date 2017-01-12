@@ -65,8 +65,8 @@ public class Register {
 			
 			ReportUtils.reportResult("Pass", "Registration", "Registration is successful!");
 			
-			 driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
-			sd.clickLink(driver, "//input[contains(@name,'register')]");
+			// driver.findElement(By.xpath("//input[contains(@name,'register')]")).click();
+			sd.clickLink(driver, PO_Register.LINK_REGISTER);
 			
 			Thread.sleep(5000); // Wait to see the confirmation screen
 
