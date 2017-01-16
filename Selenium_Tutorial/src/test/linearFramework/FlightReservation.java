@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import setup.TestSetup;
@@ -31,14 +32,13 @@ public class FlightReservation {
 		// Create WebDriver
 		
 		//Chrome Browser
-		 	System.setProperty("webdriver.chrome.driver", "D:/Selenium_Drivers\\drivers/chromedriver.exe");
+	 	 	System.setProperty("webdriver.chrome.driver", "D:/Selenium_Drivers\\drivers/chromedriver.exe");
 		 	WebDriver driver = new ChromeDriver();
-		
+		// 	WebDriver	 driver = new RemoteWebDriver();
 		//Firefox Browser
-	//	System.setProperty("webdriver.gecko.driver", "D:/Selenium_Drivers\\drivers/geckodriver.exe");
-	//	WebDriver driver = new FirefoxDriver();
-		
-		
+	 /*	System.setProperty("webdriver.gecko.driver", "D:/Selenium_Drivers\\drivers/geckodriver.exe");
+	 	WebDriver driver = new FirefoxDriver();
+	*/	
 		
 
 		String URL = "http://newtours.demoaut.com";

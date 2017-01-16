@@ -12,10 +12,10 @@ import pages.SignOn;
 public class MercuryToursFlow {
 	
 	public void mercuryTours(WebDriver driver) throws Exception{
-		
+		// Pages
 		try {
 			new Register().registration(driver);
-			 new SignOn().login(driver);
+		//	 new SignOn().login(driver);
 			 new FlightFinder().findFlights(driver);
 			 new SelectFlight().selectFlight(driver);
 			 new BookAFlight().bookFlight_Passengers(driver);

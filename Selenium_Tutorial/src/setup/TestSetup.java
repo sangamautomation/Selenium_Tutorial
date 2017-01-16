@@ -48,12 +48,13 @@ public class TestSetup {
 			driver = new ChromeDriver();
 			break;
 		case "Firefox":
+			System.out.println("Entered Firefox.....");
 			System.setProperty("webdriver.gecko.driver", "D:/Selenium_Drivers\\drivers/geckodriver.exe");
 			driver = new FirefoxDriver();
 			//driver = new MarionetteDriver();
 			break;
 		case "IE":
-			System.setProperty("webdriver.ie.driver", "D:/Selenium_Drivers\\drivers/IEDriverServer_x32.exe");
+			System.setProperty("webdriver.ie.driver", "D:/Selenium_Drivers\\drivers/IEDriverServer_x64.exe");
 			driver = new InternetExplorerDriver();
  			break;
 		case "Edge":
@@ -68,8 +69,7 @@ public class TestSetup {
 			System.setProperty("webdriver.opera.driver", "D:/Selenium_Drivers\\drivers/operadriver.exe");
 			driver = new OperaDriver();
  			break;	
- 		
-		default:
+ 		default:
  			System.setProperty("webdriver.chrome.driver", "D:/Selenium_Drivers\\drivers/chromedriver.exe");
 			driver = new ChromeDriver();
 			break;

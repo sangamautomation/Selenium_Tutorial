@@ -1,17 +1,32 @@
 package rnd;
 
+import java.sql.Date;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
 
 import data.Constants;
 import data.TestDataPool;
+import utils.DateUtils;
 import utils.ExcelUtils;
+import utils.PasswordUtils;
 import utils.PropertyUtils;
 
 public class AdhocTest {
 
 	public static void main(String[] args) throws Exception {
 		
+		DateUtils.getCurrentDate("MMddyyyy");
+		DateUtils.getCurrentTimestamp("MMddyyyy HH:mm:ss"); //"MM-dd-yyyy HH:mm:ss"
 		
+		
+		JOptionPane.showMessageDialog(null, "Debug it!!!");
+
+		
+		PasswordUtils.encryptString("Automation12345");
+ 		PasswordUtils.decryptString("I/mTPwYhe6w4srmtx2x/Tg==");
+		
+ 		
 		PropertyUtils.propertyFile_Read(Constants.path_PropertyFile_config, "browserType");
 		PropertyUtils.propertyFile_Write(Constants.path_PropertyFile_config, "Price", "$1300");
 		
