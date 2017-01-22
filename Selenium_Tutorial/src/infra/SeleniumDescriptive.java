@@ -1,8 +1,11 @@
 package infra;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import utils.DateUtils;
@@ -12,23 +15,46 @@ import utils.DateUtils;
  */
 public class SeleniumDescriptive {
 
+	
+	/**
+	 * wait - implicitely waits for the page to load until max timout
+	 * @param driver
+	 * @param timeout
+	 */
+	public static void wait(WebDriver driver, int timeout){
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+	}
 	/**
 	 * clickLink - Click on link by specific xpath
 	 * @param driver
 	 * @param xpathLocator
 	 */
-	public void clickLink(WebDriver driver, String xpathLocator){
+	public static void clickLink(WebDriver driver, String xpathLocator){
 
 		try {
 			driver.findElement(By.xpath(xpathLocator)).click();
 			System.out.println("["+DateUtils.getCurrentTimestamp("MMddyyyy HH:mm:ss")+"] | Clicked the link :" + xpathLocator );
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+		 	throw e;
 		}
 
 	}
 
+/**
+ * switchToFrame - switches to a frame by it's xpath
+ * @param driver
+ * @param xpathValue
+ */
+public void switchToFrame(WebDriver driver,  String xpathValue){
+		
+	WebElement we = driver.findElement(By.xpath(xpathValue));
+	driver.switchTo().frame(we);
+	System.out.println("Switched to frame with xpath :"+xpathValue);
+
+}
+	
 	/**
 	 * setText - Enter text into text field by taking driver and xpath as args
 	 * @param driver
@@ -135,11 +161,28 @@ public class SeleniumDescriptive {
 	 * @return
 	 */
 	public String getWidgetText(WebDriver driver, String xpathLocator){
-		System.out.println("["+DateUtils.getCurrentTimestamp("MMddyyyy HH:mm:ss")+"]"+" | Captured text :" + xpathLocator + " = " +driver.findElement(By.xpath(xpathLocator)).getText());
-
-		return driver.findElement(By.xpath(xpathLocator)).getText();
+	//	System.out.println("["+DateUtils.getCurrentTimestamp("MMddyyyy HH:mm:ss")+"]"+" | Captured text :" + xpathLocator + " = " +driver.findElement(By.xpath(xpathLocator)).getText());
+		
+		String text = driver.findElement(By.xpath(xpathLocator)).getText();
+		
+	//	System.out.println("getWidgetText = "+text);
+		
+		
+		return text;
 
 	}
 
+	// 2 - Level actions
+	public void buildActions(WebDriver driver, String xpath1, String xpath2){
+		//For building sequence of actions
+		Actions actions = new Actions(driver);
+		WebElement we = driver.findElement(By.xpath(xpath1));
+		WebElement we1 = driver.findElement(By.xpath(xpath2));
+		actions.moveToElement(we).moveToElement(we1).click().build().perform();
+			
+	}
+	
+	
+	
 
 }

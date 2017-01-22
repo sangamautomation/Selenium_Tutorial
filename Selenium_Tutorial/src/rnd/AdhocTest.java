@@ -9,13 +9,37 @@ import data.Constants;
 import data.TestDataPool;
 import utils.DateUtils;
 import utils.ExcelUtils;
+import utils.FileSystemUtils;
+import utils.KeyboardUtils;
 import utils.PasswordUtils;
 import utils.PropertyUtils;
+import utils.XMLUtils;
 
 public class AdhocTest {
 
 	public static void main(String[] args) throws Exception {
+		KeyboardUtils k = new KeyboardUtils();
+
+	FileSystemUtils.createFolder("D:\\Selenium_Backup\\CheckingONe");
+	FileSystemUtils.createFile("D:\\Selenium_Backup\\CheckingONe\\", "hi", "doc");
+
+	//	Thread.sleep(1000000); //Delay
+		System.exit(0); // Kill or Abort Java Process
+	//	JOptionPane.showMessageDialog(null, "Debug it!!!"); // Pause by Dialog
 		
+		
+		
+		// Read XML Request File
+	HashMap<String,String> xmlRequestData =	new XMLUtils().getHashMapFromXML(Constants.path_RequestXMLFile);
+		
+	String requestCode = xmlRequestData.get("StateName");
+	System.out.println(requestCode);
+	
+	
+		Runtime.getRuntime().exec("notepad.exe");
+		KeyboardUtils.typeString("abcdefgh");;
+ 	 	k.type("abcdefgh@gmail.com"); //abcdefgh@gmail.com
+		//*[@id="bx-close-inside-437260"]/svg
 		DateUtils.getCurrentDate("MMddyyyy");
 		DateUtils.getCurrentTimestamp("MMddyyyy HH:mm:ss"); //"MM-dd-yyyy HH:mm:ss"
 		

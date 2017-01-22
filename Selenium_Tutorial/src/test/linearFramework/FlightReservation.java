@@ -16,7 +16,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import setup.TestSetup;
 import utils.StringUtils;
@@ -52,13 +55,25 @@ public class FlightReservation {
 		driver.get(URL);
 
 		//Wait
-		//Thread.sleep(1000);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		 Thread.sleep(1000); // Static wait
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Implicit Wait (MaxTimeout = 10 sec)
+		
+				
+		WebDriverWait webwait = new WebDriverWait(driver, 20); // Explicit Wait/Dynamic Wait
 
 		//********************** Registration *******************
+		
+ 		webwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[contains(@name,'firstName')]")));
+
 		driver.findElement(By.partialLinkText("REGIST")).click(); //Click on Register link
-		driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).clear(); 
+		
+ 		webwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@name,'firstName')]")));
+ 		//webwait.until(ExpectedConditions.textToBePresentInElementValue(driver.findElement(By.xpath("//input[contains(@name,'firstName')]")),"soandsotext");
+ 	//	webwait.until(ExpectedConditions.(driver.findElement(By.xpath("//input[contains(@name,'firstName')]")),"soandsotext");
+
+		
+ 		
+ 		driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).clear(); 
 		driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).sendKeys("Vijay"); //Type FirstName
 		driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).clear(); 
 		driver.findElement(By.xpath("//input[contains(@name,'lastName')]")).sendKeys("Reddy"); //Type last name

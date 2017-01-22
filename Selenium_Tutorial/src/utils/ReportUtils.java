@@ -19,6 +19,9 @@ public class ReportUtils {
 			System.out.println("FAIL ~ Test Step FAILED for "+header+ " :: "+ reportComment);
  			ScreenshotUtils.screenshot(Constants.screenshotFolderPath, counter);
  			break;
+		case "Done":
+			System.out.println("Done ~ Test Step is Done for "+header+ " :: "+ reportComment);
+  			break;
 		default:
 			break;
 		}

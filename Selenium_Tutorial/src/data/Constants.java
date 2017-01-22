@@ -14,5 +14,10 @@ public class Constants {
 
 	public static String path_PropertyFile_config ="D:/Selenium_Logs/TestData/config.properties";
 	
+	public static String path_PropertyFile_webservices ="D:\\Selenium_Logs\\WebServices/webserivces.properties";
+	public static String path_RequestXMLFile ="D:/Selenium_Logs/WebServices/requests/SampleWebService.xml";
+	public static String path_ResponseXMLFile ="D:/Selenium_Logs/WebServices/responses/response.xml";
+
+	
 	
 }
