@@ -14,10 +14,12 @@ public class StringUtils {
 		 if(expectedValue.equals(actualValue)){
 			flag=true;
 			System.out.println("PASS :: expectedValue :"+ expectedValue + " = "+ "actualValue :"+ actualValue );
+			ReportUtils.reportResult("Pass", "Validation Successful", actualValue);
 		 }
 		else{
 			flag=false; 
 			System.out.println("FAIL :: expectedValue :"+ expectedValue + " != "+ "actualValue :"+ actualValue);
+			ReportUtils.reportResult("Fail", "Validation Failed", "Exepcted value = " +expectedValue);
 
 		}
 	//	flag=expectedValue.equalsIgnoreCase(actualValue)?true:false;

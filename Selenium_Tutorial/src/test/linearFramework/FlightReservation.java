@@ -8,6 +8,7 @@ package test.linearFramework;
 
 
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -71,7 +72,12 @@ public class FlightReservation {
  		//webwait.until(ExpectedConditions.textToBePresentInElementValue(driver.findElement(By.xpath("//input[contains(@name,'firstName')]")),"soandsotext");
  	//	webwait.until(ExpectedConditions.(driver.findElement(By.xpath("//input[contains(@name,'firstName')]")),"soandsotext");
 
-		
+	//	List<WebElement> ele = driver.findElements(By.xpath("//input[contains(@name,'firstName')]"));
+ 		
+ 		driver.navigate().refresh();// refresh the page
+ 		Thread.sleep(10000);//Static sleep
+ 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //implicit sleep 
+ 		
  		
  		driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).clear(); 
 		driver.findElement(By.xpath("//input[contains(@name,'firstName')]")).sendKeys("Vijay"); //Type FirstName

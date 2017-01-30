@@ -6,12 +6,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.DateUtils;
 //Commiting to git account to sangamautomation (Selenium_Tutorial update)
 /**
  *SeleniumDescriptive - For All Infrastructural Level Reusable Functions
+ */
+/**
+ *
  */
 public class SeleniumDescriptive {
 
@@ -24,6 +30,21 @@ public class SeleniumDescriptive {
 	public static void wait(WebDriver driver, int timeout){
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+	}
+	
+	/**
+	 * dynamicWait - waits for a specific element to be visible 
+	 * @param driver
+	 * @param xpathLocator
+	 */
+	public static void dynamicWait(WebDriver driver, int timeOutInSeconds){
+		
+		WebDriverWait mywait = new WebDriverWait(driver, timeOutInSeconds);
+		ExpectedCondition<WebElement> flag = ExpectedConditions.visibilityOfElementLocated(By.xpath("xpathexpression"));
+		mywait.until(flag);
+		
+		driver.findElement(By.xpath("//input[contains(@id,'xyz')]")).click();
+				
 	}
 	/**
 	 * clickLink - Click on link by specific xpath

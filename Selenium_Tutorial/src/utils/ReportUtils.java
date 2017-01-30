@@ -13,14 +13,18 @@ public class ReportUtils {
 		switch (verdict_Pass_Fail) {
 		case "Pass":
 			System.out.println("PASS ~ Test Step Passed for "+header+ " :: "+ reportComment);
+			PropertyUtils.propertyFile_Write("D:/Selenium_Logs/Screenshots/Captions.properties", "Caption"+counter, reportComment);
  			ScreenshotUtils.screenshot(Constants.screenshotFolderPath, counter);
  			break;
 		case "Fail":
 			System.out.println("FAIL ~ Test Step FAILED for "+header+ " :: "+ reportComment);
- 			ScreenshotUtils.screenshot(Constants.screenshotFolderPath, counter);
+			PropertyUtils.propertyFile_Write("D:/Selenium_Logs/Screenshots/Captions.properties", "Caption"+counter, reportComment);
+  			ScreenshotUtils.screenshot(Constants.screenshotFolderPath, counter);
  			break;
 		case "Done":
 			System.out.println("Done ~ Test Step is Done for "+header+ " :: "+ reportComment);
+			PropertyUtils.propertyFile_Write("D:/Selenium_Logs/Screenshots/Captions.properties", "Caption"+counter, reportComment);
+
   			break;
 		default:
 			break;
